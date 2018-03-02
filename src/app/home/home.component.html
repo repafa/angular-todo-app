@@ -1,0 +1,23 @@
+<p class="lead text-center">
+  Kattints a fenti menüpontok egyikére vagy <a [routerLink]="['/todos']">ide</a> a tennivalókért!
+</p>
+
+<p class="text-center mt-5">
+  Teszt feladat - Németh László - 2018.02.27.
+</p>
+
+<p>
+  <strong>Feladat leírása:</strong>
+  Készíts webalkalmazást, amely alkalmas feladatok/teendők nyilvántartására. A technológia az Angular (2+) legújabb verziója legyen, az adatok tárolásához nem kell backend-et és igazi adatbázist használni, elegendő pl. egy localStorage-es vagy ahhoz hasonló megoldás.
+</p>
+<p>
+  Az alkalmazás a következő oldalakkal rendelkezzen:
+</p>
+<ul>
+  <li>Feladat lista oldal: egy táblázatban szerepeljen az összes felvett nyitott feladat.</li>
+  <li>Minden feladat a következő adatokkal rendelkezzen: rövid leírás, határidő, létrehozás dátuma, prioritás</li>
+  <li>A feladatokat legyen lehetőség a táblázatban egy gombnyomással elvégzettnek nyilvánítani (ekkor eltűnik az adott feladat a listából).</li>
+  <li>A prioritásnak két értéke lehet: fontos / kevésbé fontos.</li>
+  <li>A lista legyen alapból prioritás, majd határidő szerint rendezve (felül a legfontosabb, legkorábbi határidejű legyen).</li>
+  <li>Új feladat felvétele oldal: a lista oldalon az "Új feladat" gombra kattintva lehet ide navigálni, és egy űrlap kitöltése után a megadott adatokkal a rendszer felvesz egy új feladatot az adatbázisba. Az űrlap mezői legyenek validálva: a leírás max 100 karakter lehessen, a dátumokhoz csak érvényes dátumot fogadjon el a rendszer és a prioritás a két fix lehetőség közül legyen csak választható.</li>
+</ul>

@@ -1,0 +1,30 @@
+<table class="table" *ngIf="todos; else xxx">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Leírás</th>
+    <th scope="col">Prioritás</th>
+    <th scope="col">Határidő</th>
+    <th scope="col">Létrehozás dátuma</th>
+    <th scope="col">
+      <input class="form-control mr-sm-2" name="description" [(ngModel)]="searchFilter.description" type="search" placeholder="keresés" aria-label="Search">
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let todo of todos | searchFilterPipe: searchFilter.description; let i = index">
+    <ng-container *ngIf="!todo.completedAt">
+      <th scope="row">{{todo.id}}</th>
+      <td>{{ todo.description }}</td>
+      <td>{{ todo.priority | priority }}</td>
+      <td>{{ todo.deadline | date:'y-MM-dd' }}</td>
+      <td>{{ todo.createdAt | date:'y-MM-dd' }}</td>
+      <td>
+        <button type="button" class="btn btn-success" (click)="setCompleted(todo)">✔</button>
+        <a [routerLink]="['/todo', todo.id]" class="btn btn-info" role="button">Szerkesztés</a>
+        <button type="button" class="btn btn-danger" (click)="deleteTodo(todo)">Törlés</button>
+      </td>
+    </ng-container>
+  </tr>
+  </tbody>
+</table>

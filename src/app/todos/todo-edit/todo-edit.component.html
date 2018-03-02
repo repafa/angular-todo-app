@@ -1,0 +1,34 @@
+<app-todo-edit-message [todoSaved]="saved" (messageClicked)="onMessageClicked($event)"></app-todo-edit-message>
+<form #todoForm="ngForm" (ngSubmit)="onSubmitTodoForm(todoForm)">
+
+  <div class="form-group">
+    <label>Leírás</label>
+    <textarea #description="ngModel" class="form-control" name="description" [(ngModel)]="todo.description" required maxlength="100"></textarea>
+    <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert alert-danger">
+      number of charachters must be between 1-100
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Prioritás</label>
+    <select pattern="^[1-2]" #priority="ngModel" class="form-control" name="priority" [(ngModel)]="todo.priority" required>
+      <option *ngFor="let priority of priorities; let value = index" [ngValue]="value">{{priority}}</option>
+    </select>
+    <div *ngIf="priority.invalid && (priority.dirty || priority.touched)" class="alert alert-danger">
+      please set priority
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Határidő</label>
+    <input validateDate #deadline="ngModel" type="text" class="form-control" [ngModel]="todo.deadline | date:'y-MM-dd'" name="deadline" required placeholder="yyyy-mm-dd">
+    <div *ngIf="deadline.invalid && (deadline.dirty || deadline.touched)" class="alert alert-danger">
+      not valid date
+    </div>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary" [disabled]="!todoForm.valid">Mentés</button>
+  </div>
+
+</form>
